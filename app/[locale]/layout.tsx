@@ -22,7 +22,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
-  return { title: t("title"), description: t("description") };
+  return {
+    // Absolute URLs for the share image: Vercel sets the production domain; locally it's the dev server
+    metadataBase: new URL(
+      process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+        : "http://localhost:3080",
+    ),
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {

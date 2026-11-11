@@ -4,6 +4,8 @@
 
 Free to use, free to run, and private by design.
 
+![JobFit demo: landing page, sample match score and a streamed cover letter](docs/screenshots/jobfit-demo.gif)
+
 ## What makes it different
 
 - **Runs in your browser.** The PDF is read with pdf.js on the user's device; skill matching happens in the page. No upload.
