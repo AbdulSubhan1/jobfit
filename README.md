@@ -44,7 +44,7 @@ npm run test:e2e   # Playwright smoke tests (on demand)
 | `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`                                                   | Google OAuth client.                                                                                                                                                |
 | `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`                                                   | GitHub OAuth app.                                                                                                                                                   |
 | `AI_PROVIDER`                                                                            | `google`, `groq`, `openai`, `anthropic` or `ollama`.                                                                                                                |
-| `AI_MODEL`                                                                               | Model id for that provider, e.g. `gemini-flash-lite-latest`.                                                                                                        |
+| `AI_MODEL`                                                                               | Model id for that provider, e.g. `gemini-3.5-flash-lite`.                                                                                                           |
 | `GOOGLE_GENERATIVE_AI_API_KEY` / `GROQ_API_KEY` / `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` | Only the one for your provider.                                                                                                                                     |
 | `OLLAMA_BASE_URL`                                                                        | For a local Ollama, e.g. `http://localhost:11434/api`.                                                                                                              |
 | `AI_DAILY_LIMIT`                                                                         | AI runs per user per UTC day (default 5).                                                                                                                           |
@@ -56,13 +56,13 @@ Keys are read on the server only. Nothing secret uses the `NEXT_PUBLIC_` prefix.
 
 Change two env vars and redeploy — no code change:
 
-| Provider      | `AI_PROVIDER` | Example `AI_MODEL`         | Free tier (checked Nov 2026)                   |
-| ------------- | ------------- | -------------------------- | ---------------------------------------------- |
-| Google Gemini | `google`      | `gemini-flash-lite-latest` | ~500 requests/day on Flash-Lite; Flash ~20/day |
-| Groq          | `groq`        | `openai/gpt-oss-120b`      | ~1,000 requests/day, 8K tokens/minute          |
-| OpenAI        | `openai`      | any chat model             | paid                                           |
-| Anthropic     | `anthropic`   | any Claude model           | paid                                           |
-| Ollama        | `ollama`      | `llama3.2`                 | free, runs on your machine                     |
+| Provider      | `AI_PROVIDER` | Example `AI_MODEL`      | Free tier (checked Nov 2026)                   |
+| ------------- | ------------- | ----------------------- | ---------------------------------------------- |
+| Google Gemini | `google`      | `gemini-3.5-flash-lite` | ~500 requests/day on Flash-Lite; Flash ~20/day |
+| Groq          | `groq`        | `openai/gpt-oss-120b`   | ~1,000 requests/day, 8K tokens/minute          |
+| OpenAI        | `openai`      | any chat model          | paid                                           |
+| Anthropic     | `anthropic`   | any Claude model        | paid                                           |
+| Ollama        | `ollama`      | `llama3.2`              | free, runs on your machine                     |
 
 Free-tier limits change often; the provider's console shows your real quota.
 
