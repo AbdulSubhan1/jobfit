@@ -46,6 +46,11 @@ const eslintConfig = defineConfig([
     },
   },
   {
+    // ImageResponse only renders inline styles
+    files: ["app/**/opengraph-image.tsx"],
+    rules: { "no-restricted-syntax": "off" },
+  },
+  {
     files: ["components/ui/**"],
     rules: { "no-restricted-syntax": ["error", NO_INLINE_STYLE] },
   },
