@@ -29,3 +29,25 @@ test("resetAt is the next UTC midnight", async () => {
   expect(new Date(resetAt).toISOString()).toMatch(/T00:00:00.000Z$/);
   expect(resetAt).toBeGreaterThan(Date.now());
 });
+
+test("uses Redis when only the Vercel integration's KV_* names are set", async () => {
+  const counts = new Map<string, number>();
+  vi.doMock("@upstash/redis", () => ({
+    Redis: {
+      fromEnv: () => ({
+        incr: async (k: string) => counts.set(k, (counts.get(k) ?? 0) + 1).get(k)!,
+        decr: async (k: string) => counts.set(k, (counts.get(k) ?? 0) - 1).get(k)!,
+        get: async (k: string) => counts.get(k) ?? null,
+        expire: async () => 1,
+      }),
+    },
+  }));
+  vi.stubEnv("NODE_ENV", "production");
+  vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
+  vi.stubEnv("KV_REST_API_URL", "https://example.upstash.io");
+  vi.stubEnv("KV_REST_API_TOKEN", "test-token");
+  const { takeDailyRun } = await import("./daily");
+  expect((await takeDailyRun("u4")).ok).toBe(true);
+  expect(counts.size).toBe(1);
+  vi.doUnmock("@upstash/redis");
+});

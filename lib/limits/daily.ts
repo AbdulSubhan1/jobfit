@@ -27,7 +27,10 @@ function memoryCounter(): Counter {
 let counter: Counter | undefined;
 function getCounter(): Counter {
   if (counter) return counter;
-  if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+  // Redis.fromEnv reads either name set: Upstash's own, or the one the Vercel integration creates
+  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  if (url && token) {
     const redis = Redis.fromEnv();
     counter = {
       incr: (k) => redis.incr(k),
@@ -36,7 +39,9 @@ function getCounter(): Counter {
       expire: (k, s) => redis.expire(k, s),
     };
   } else if (process.env.NODE_ENV === "production") {
-    throw new Error("Set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN: the daily limit needs shared storage");
+    throw new Error(
+      "Set UPSTASH_REDIS_REST_URL/TOKEN (or KV_REST_API_URL/TOKEN): the daily limit needs shared storage",
+    );
   } else {
     // Local dev only: resets when the server restarts
     counter = memoryCounter();

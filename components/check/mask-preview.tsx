@@ -20,7 +20,16 @@ export function MaskPreview({ open, onClose, onSend, masked, extraTerms, onExtra
 
   return (
     <Dialog open={open} onClose={onClose} title={t("title")} closeLabel={tc("close")}>
-      <div className="grid gap-4">
+      {/* The actions come first so keyboard users reach Send without tabbing through every word; they show last */}
+      <div className="flex flex-col gap-4">
+        <div className="sticky bottom-0 order-last -mx-5 -mb-5 flex flex-wrap justify-end gap-3 border-t-[3px] border-ink bg-card px-5 py-3">
+          <Button variant="ghost" onClick={onClose}>
+            {t("cancel")}
+          </Button>
+          <Button variant="primary" onClick={onSend}>
+            <Icon name="shield" /> {t("send")}
+          </Button>
+        </div>
         <p className="text-sm text-ink-soft">{t("intro")}</p>
         <p className="font-display font-extrabold">{t("hiddenCount", { count: Object.keys(masked.map).length })}</p>
 
@@ -43,15 +52,6 @@ export function MaskPreview({ open, onClose, onSend, masked, extraTerms, onExtra
           <h3 className="font-display text-sm font-extrabold tracking-widest uppercase">{t("job")}</h3>
           <MaskedText text={masked.job} onWordClick={hide} wordLabel={wordLabel} />
         </section>
-
-        <div className="sticky bottom-0 -mx-5 -mb-5 flex flex-wrap justify-end gap-3 border-t-[3px] border-ink bg-card px-5 py-3">
-          <Button variant="ghost" onClick={onClose}>
-            {t("cancel")}
-          </Button>
-          <Button variant="primary" onClick={onSend}>
-            <Icon name="shield" /> {t("send")}
-          </Button>
-        </div>
       </div>
     </Dialog>
   );

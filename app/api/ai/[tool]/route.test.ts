@@ -1,4 +1,4 @@
-import { simulateReadableStream } from "ai";
+import { APICallError, simulateReadableStream } from "ai";
 import { MockLanguageModelV4 } from "ai/test";
 import { beforeEach, describe, expect, test, vi } from "vitest";
 import { auth } from "@/auth";
@@ -30,10 +30,17 @@ function streamingModel(deltas: string[]) {
   });
 }
 
+// What a real provider failure looks like: the error carries the full request body
 const failingModel = () =>
   new MockLanguageModelV4({
-    doStream: async () => {
-      throw new Error("quota exhausted");
+    doStream: async ({ prompt }) => {
+      throw new APICallError({
+        message: "quota exhausted",
+        url: "https://provider.example/v1",
+        requestBodyValues: { prompt },
+        statusCode: 429,
+        isRetryable: false,
+      });
     },
   });
 
@@ -123,5 +130,25 @@ describe("POST /api/ai/[tool]", () => {
     expect(res.status).toBe(502);
     expect(await res.json()).toEqual({ error: "provider" });
     expect(refundDailyRun).toHaveBeenCalledWith("github:42");
+  });
+
+  test("never logs the CV or job when the provider fails", async () => {
+    signedIn();
+    vi.mocked(getModel).mockReturnValue(failingModel());
+    const logged: string[] = [];
+    const spy = vi.spyOn(console, "error").mockImplementation((...args) => {
+      logged.push(args.map((a) => (a instanceof Error ? `${a.message} ${JSON.stringify(a)}` : String(a))).join(" "));
+    });
+    await call("cover-letter", { job: JOB, cv: CV });
+    spy.mockRestore();
+    expect(logged.join("\n")).not.toContain("Built React apps");
+    expect(logged.join("\n")).not.toContain("Senior React engineer");
+  });
+
+  test("checks the job and CV separately for contact details", async () => {
+    signedIn();
+    // Joined, "…0300" and "1234567…" would look like one phone number
+    const res = await call("bullets", { job: "1234567 is our office code", cv: "Worked at site 0300" });
+    expect(res.status).toBe(200);
   });
 });

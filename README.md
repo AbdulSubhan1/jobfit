@@ -36,17 +36,17 @@ npm run test:e2e   # Playwright smoke tests (on demand)
 
 ## Environment variables
 
-| Name                                                                                     | What it is                                                   |
-| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `AUTH_SECRET`                                                                            | Random secret for Auth.js. Generate with `npx auth secret`.  |
-| `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`                                                   | Google OAuth client.                                         |
-| `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`                                                   | GitHub OAuth app.                                            |
-| `AI_PROVIDER`                                                                            | `google`, `groq`, `openai`, `anthropic` or `ollama`.         |
-| `AI_MODEL`                                                                               | Model id for that provider, e.g. `gemini-flash-lite-latest`. |
-| `GOOGLE_GENERATIVE_AI_API_KEY` / `GROQ_API_KEY` / `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` | Only the one for your provider.                              |
-| `OLLAMA_BASE_URL`                                                                        | For a local Ollama, e.g. `http://localhost:11434/api`.       |
-| `AI_DAILY_LIMIT`                                                                         | AI runs per user per UTC day (default 5).                    |
-| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`                                     | Upstash Redis REST credentials. Required in production.      |
+| Name                                                                                     | What it is                                                                                                                                                          |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AUTH_SECRET`                                                                            | Random secret for Auth.js. Generate with `npx auth secret`.                                                                                                         |
+| `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`                                                   | Google OAuth client.                                                                                                                                                |
+| `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`                                                   | GitHub OAuth app.                                                                                                                                                   |
+| `AI_PROVIDER`                                                                            | `google`, `groq`, `openai`, `anthropic` or `ollama`.                                                                                                                |
+| `AI_MODEL`                                                                               | Model id for that provider, e.g. `gemini-flash-lite-latest`.                                                                                                        |
+| `GOOGLE_GENERATIVE_AI_API_KEY` / `GROQ_API_KEY` / `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` | Only the one for your provider.                                                                                                                                     |
+| `OLLAMA_BASE_URL`                                                                        | For a local Ollama, e.g. `http://localhost:11434/api`.                                                                                                              |
+| `AI_DAILY_LIMIT`                                                                         | AI runs per user per UTC day (default 5).                                                                                                                           |
+| `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`                                     | Upstash Redis REST credentials. Required in production. The Vercel Marketplace integration names them `KV_REST_API_URL` and `KV_REST_API_TOKEN`; either pair works. |
 
 Keys are read on the server only. Nothing secret uses the `NEXT_PUBLIC_` prefix.
 

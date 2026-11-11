@@ -1,4 +1,4 @@
-import { streamText } from "ai";
+import { APICallError, streamText } from "ai";
 import { z } from "zod";
 import { auth } from "@/auth";
 import { AI_TOOLS, LIMITS, type AiTool } from "@/constants/config";
@@ -30,8 +30,8 @@ export async function POST(req: Request, ctx: RouteContext<"/api/ai/[tool]">) {
   const body = Body.safeParse(await req.json().catch(() => null));
   if (!body.success) return json({ error: "invalid" }, 400);
   const { job, cv } = body.data;
-  // The browser masks first; this catches a client that didn't
-  if (findPersonalData(`${job}\n${cv}`).length) return json({ error: "personal-data" }, 400);
+  // The browser masks first; this catches a client that didn't. Checked apart so the texts can't join up.
+  if (findPersonalData(job).length || findPersonalData(cv).length) return json({ error: "personal-data" }, 400);
 
   const run = await takeDailyRun(userId);
   if (!run.ok) return json({ error: "limit", resetAt: run.resetAt }, 429);
@@ -42,6 +42,9 @@ export async function POST(req: Request, ctx: RouteContext<"/api/ai/[tool]">) {
     prompt: buildPrompt(tool, job, cv),
     maxRetries: 1,
     abortSignal: req.signal,
+    // The SDK's default logs the whole error, and provider errors carry the request body (the CV)
+    onError: ({ error }) =>
+      console.error(APICallError.isInstance(error) ? `AI provider error ${error.statusCode}` : "AI provider error"),
   });
   const parts = result.stream[Symbol.asyncIterator]();
 

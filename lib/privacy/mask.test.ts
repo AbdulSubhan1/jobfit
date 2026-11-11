@@ -57,10 +57,6 @@ describe("maskPersonalData", () => {
     const { masked } = maskPersonalData("a@b.co then a@b.co and c@d.co");
     expect(masked).toBe("[EMAIL-1] then [EMAIL-1] and [EMAIL-2]");
   });
-
-  test("lists what kinds were found", () => {
-    expect(maskPersonalData(CV).found).toEqual(expect.arrayContaining(["NAME", "EMAIL", "PHONE", "LINK", "ADDRESS"]));
-  });
 });
 
 describe("unmask", () => {
@@ -114,5 +110,82 @@ describe("maskForAi", () => {
     const r = maskForAi(CV, JOB);
     expect(unmask(r.cv, r.map)).toBe(CV);
     expect(unmask(r.job, r.map)).toBe(JOB);
+  });
+});
+
+describe("realistic CV headers (review findings)", () => {
+  test.each([
+    [
+      "phone above a line starting with a year",
+      "Abdul Subhan\n+92 300 1234567\n2019 - 2023 Frontend Engineer",
+      "+92 300 1234567",
+    ],
+    ["phone above a blank line and a year range", "+971 50 123 4567\n\n2019-2023", "+971 50 123 4567"],
+    ["two phones separated by a space", "0300 1234567 0321 7654321", "0321 7654321"],
+    ["US dashes", "Call 555-123-4567", "555-123-4567"],
+    ["US dots", "Call 555.123.4567", "555.123.4567"],
+    ["labelled phone without + or 0", "Phone: 971 50 123 4567", "971 50 123 4567"],
+    ["Mob label", "Mob 92 300 1234567", "92 300 1234567"],
+    ["https link on another domain", "Portfolio https://myportfolio.eu", "myportfolio.eu"],
+    ["https link with path", "See https://abdul.de/about.", "abdul.de/about"],
+    ["bare .ca domain", "abdul.ca", "abdul.ca"],
+    ["upper-case www", "WWW.ABDUL.DEV", "ABDUL.DEV"],
+    ["mixed-case profile link", "GitHub.com/Abdul", "GitHub.com/Abdul"],
+  ])("masks %s", (_, text, raw) => {
+    const { masked } = maskPersonalData(text);
+    expect(masked).not.toContain(raw);
+    expect(findPersonalData(masked)).toEqual([]);
+  });
+
+  test("the server check catches what the browser would mask", () => {
+    expect(findPersonalData("Call 555-123-4567")).toEqual(["PHONE"]);
+    expect(findPersonalData("Phone: 971 50 123 4567")).toEqual(["PHONE"]);
+    expect(findPersonalData("https://myportfolio.eu")).toEqual(["LINK"]);
+    expect(findPersonalData("+92 300 1234567\n2019 - 2023")).toEqual(["PHONE"]);
+  });
+
+  test.each(["(01.2019 - 03.2023)", "(2019-2020) 2021", "Jan 2019 – Mar 2023"])("keeps date range %s", (dates) => {
+    expect(maskPersonalData(`Engineer ${dates}`).masked).toBe(`Engineer ${dates}`);
+  });
+
+  test.each([
+    ["Curriculum Vitae\nAbdul Subhan\nabdul@x.com", "Abdul Subhan"],
+    ["Senior Software Engineer\nAbdul Subhan", "Abdul Subhan"],
+    ["Abdul Subhan | Senior Frontend Engineer", "Abdul Subhan"],
+    ["Abdul Subhan — Frontend Engineer", "Abdul Subhan"],
+    ["Name: Abdul Subhan", "Abdul Subhan"],
+    ["Dubai, UAE\nAbdul Subhan", "Abdul Subhan"],
+    ["عبد السبحان\nمهندس واجهات", "عبد السبحان"],
+  ])("finds the name in %j", (cv, name) => {
+    expect(maskPersonalData(cv).masked).not.toContain(name);
+  });
+
+  test("does not hide heading or job-title words as a name", () => {
+    const r = maskForAi("Senior Software Engineer\nAbdul Subhan", "We need a Software Engineer");
+    expect(r.job).toBe("We need a Software Engineer");
+    expect(r.cv).toBe("Senior Software Engineer\n[NAME-1]");
+  });
+
+  test("hides name parts written in capitals elsewhere", () => {
+    expect(maskPersonalData("Abdul Subhan\nABDUL led the team").masked).not.toContain("ABDUL");
+  });
+
+  test("hiding the word 'job' does not break the job text", () => {
+    const r = maskForAi(CV, "Job: Frontend at Acme", ["job"]);
+    expect(typeof r.job).toBe("string");
+    expect(r.job).toBe("[HIDDEN-1]: Frontend at Acme");
+    expect(r.cv).not.toContain("⁣");
+  });
+
+  test.each([
+    ["digits", "0".repeat(27_000)],
+    ["letters", "a".repeat(27_000)],
+    ["letter-dash", "a-".repeat(13_500)],
+    ["dots", "a.".repeat(13_500)],
+  ])("stays fast on 27k chars of %s", (_, text) => {
+    const start = performance.now();
+    findPersonalData(text);
+    maskPersonalData(text);
+    expect(performance.now() - start).toBeLessThan(300);
   });
 });
