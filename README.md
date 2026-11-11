@@ -28,7 +28,11 @@ cp .env.example .env.local   # then fill it in (see below)
 npm run dev
 ```
 
+The app runs on **http://localhost:3080** (a fixed port, so it doesn't clash with other projects on 3000). Claude Code picks it up from `.claude/launch.json`.
+
 Without any AI key you can still use the match score and the "Try a sample" demo. Without Upstash, local dev uses an in-memory counter.
+
+**On a new laptop:** clone, `npm install`, then recreate `.env.local` from `.env.example`. Secrets never go into git, and Vercel "Secret" values can't be read back, so keep your keys in a password manager. The `localhost:3080` sign-in redirects work on any machine.
 
 ```bash
 npm test           # unit tests: masking, matching, limits, AI route auth
