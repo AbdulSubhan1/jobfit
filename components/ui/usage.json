@@ -1,27 +1,52 @@
 {
-  "Button": [],
+  "Button": [
+    "components/check/check-flow.tsx",
+    "components/check/cv-input.tsx"
+  ],
   "ButtonLink": [],
   "Tabs": [],
-  "Textarea": [],
-  "FileDrop": [],
+  "Textarea": [
+    "components/check/cv-input.tsx",
+    "components/check/job-input.tsx"
+  ],
+  "FileDrop": [
+    "components/check/cv-input.tsx"
+  ],
   "Logo": [
     "app/[locale]/design/page.tsx",
     "app/[locale]/page.tsx"
   ],
   "SectionHeading": [
+    "app/[locale]/check/page.tsx",
     "app/[locale]/design/page.tsx"
   ],
   "Card": [
-    "app/[locale]/design/page.tsx"
+    "app/[locale]/design/page.tsx",
+    "components/check/check-flow.tsx",
+    "components/check/match-result.tsx"
   ],
-  "Chip": [],
-  "Sticker": [],
-  "Icon": [],
-  "ScoreRing": [],
+  "Chip": [
+    "components/check/match-result.tsx"
+  ],
+  "Sticker": [
+    "components/check/match-result.tsx"
+  ],
+  "Icon": [
+    "components/check/check-flow.tsx",
+    "components/check/cv-input.tsx"
+  ],
+  "ScoreRing": [
+    "components/check/match-result.tsx"
+  ],
   "StreamText": [],
-  "Alert": [],
+  "Alert": [
+    "components/check/cv-input.tsx",
+    "components/check/match-result.tsx"
+  ],
   "Dialog": [],
   "ScanBar": [],
   "NumberTicker": [],
-  "Confetti": []
+  "Confetti": [
+    "components/check/match-result.tsx"
+  ]
 }

@@ -2,5 +2,56 @@
   "meta": {
     "title": "JobFit — does your CV fit the job?",
     "description": "Paste a job, drop your CV, see your match score in seconds. Free and private: your CV is read in your browser."
+  },
+  "common": {
+    "close": "Close",
+    "appName": "JobFit"
+  },
+  "check": {
+    "eyebrow": "Free · no sign-in",
+    "title": "Check your fit",
+    "intro": "Paste a job, add your CV, and see which skills match. This part runs entirely in your browser.",
+    "job": {
+      "label": "Job description",
+      "placeholder": "Paste the full job post here: title, requirements, nice-to-haves…",
+      "count": "{count, number} / {max, number} characters"
+    },
+    "cv": {
+      "label": "Your CV",
+      "drop": "Drop your CV here, or click to choose",
+      "hint": "PDF, up to 5 MB · read on your device",
+      "reading": "Reading your CV",
+      "pasteInstead": "Paste text instead",
+      "uploadInstead": "Upload a PDF instead",
+      "placeholder": "Paste your CV text here",
+      "loaded": "{words, number} words read · on your device",
+      "sampleName": "Sample CV (Sara Malik, fictional)",
+      "errors": {
+        "empty": "We couldn't read text from this PDF. It may be a scanned image. Paste your CV text instead.",
+        "too-big": "That file is over 5 MB. Try a smaller PDF, or paste the text.",
+        "not-pdf": "That doesn't look like a PDF. Upload a .pdf file, or paste the text."
+      }
+    },
+    "submit": "Check match",
+    "needBoth": "Add both a job description and your CV.",
+    "sampleBanner": "You're looking at a sample with a fictional CV. Clear it to try your own.",
+    "clearSample": "Use my own",
+    "result": {
+      "label": "Match score",
+      "skillsFound": "skills found",
+      "bands": {
+        "great": "Great fit!",
+        "good": "Good fit",
+        "some": "Some gaps",
+        "big": "Big gaps"
+      },
+      "summary": "{have, number} of {total, number} skills from the job are in your CV.",
+      "noScore": "Not enough skills found to score",
+      "noScoreHint": "This job post doesn't list many specific skills. Paste the full post, including the requirements section.",
+      "have": "You have",
+      "missing": "Missing",
+      "noneMissing": "Nothing missing. Nice!",
+      "tip": "Only add skills you really have. Use the job's own words so screening tools find them."
+    }
   }
 }
