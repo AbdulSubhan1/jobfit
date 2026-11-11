@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
+import { DM_Sans, IBM_Plex_Sans_Arabic, JetBrains_Mono, Syne } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -12,6 +12,8 @@ import "../globals.css";
 const syne = Syne({ subsets: ["latin"], variable: "--font-syne", weight: ["600", "700", "800"] });
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
+// Syne and DM Sans have no Arabic letters; the browser falls back to this per character
+const arabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic"], variable: "--font-arabic", weight: ["400", "600", "700"] });
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -32,7 +34,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     <html
       lang={locale}
       dir={RTL_LOCALES.includes(locale) ? "rtl" : "ltr"}
-      className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable}`}
+      className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable} ${arabic.variable}`}
     >
       <body className="flex min-h-dvh flex-col">
         <NextIntlClientProvider>

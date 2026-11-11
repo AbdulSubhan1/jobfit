@@ -19,6 +19,7 @@ export function MaskedText({ text, onWordClick, wordLabel }: Props) {
   return (
     <div
       data-ui="MaskedText"
+      dir="auto"
       className="rounded-btn border-2 border-ink bg-paper p-3 font-mono text-xs leading-6 [overflow-wrap:anywhere] whitespace-pre-wrap sm:text-[13px]"
     >
       {parts.map((part, i) => {

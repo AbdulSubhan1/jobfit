@@ -7,6 +7,7 @@ export function Logo({ size = "md" }: Props) {
   return (
     <span
       data-ui="Logo"
+      dir="ltr"
       className={cn(
         "inline-flex items-center font-display font-extrabold tracking-tight",
         size === "lg" ? "text-3xl" : "text-xl",

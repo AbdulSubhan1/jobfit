@@ -9,6 +9,7 @@
     "components/layout/auth-button.tsx"
   ],
   "ButtonLink": [
+    "app/[locale]/page.tsx",
     "components/layout/auth-button.tsx"
   ],
   "Tabs": [
@@ -23,30 +24,37 @@
   ],
   "Logo": [
     "app/[locale]/design/page.tsx",
-    "app/[locale]/page.tsx",
     "components/layout/site-header.tsx"
   ],
   "SectionHeading": [
     "app/[locale]/check/page.tsx",
     "app/[locale]/design/page.tsx",
+    "app/[locale]/page.tsx",
+    "app/[locale]/privacy/page.tsx",
     "components/check/ai-tools.tsx"
   ],
   "Card": [
     "app/[locale]/design/page.tsx",
+    "app/[locale]/page.tsx",
+    "app/[locale]/privacy/page.tsx",
     "components/check/ai-tools.tsx",
     "components/check/check-flow.tsx",
     "components/check/match-result.tsx",
-    "components/check/sign-in-card.tsx"
+    "components/check/sign-in-card.tsx",
+    "components/home/hero-card.tsx"
   ],
   "Chip": [
     "components/check/mask-preview.tsx",
-    "components/check/match-result.tsx"
+    "components/check/match-result.tsx",
+    "components/home/hero-card.tsx"
   ],
   "Sticker": [
     "components/check/ai-tools.tsx",
-    "components/check/match-result.tsx"
+    "components/check/match-result.tsx",
+    "components/home/hero-card.tsx"
   ],
   "Icon": [
+    "app/[locale]/page.tsx",
     "components/check/ai-output.tsx",
     "components/check/ai-tools.tsx",
     "components/check/check-flow.tsx",
@@ -56,10 +64,12 @@
     "components/layout/auth-button.tsx"
   ],
   "ScoreRing": [
-    "components/check/match-result.tsx"
+    "components/check/match-result.tsx",
+    "components/home/hero-card.tsx"
   ],
   "StreamText": [
-    "components/check/ai-output.tsx"
+    "components/check/ai-output.tsx",
+    "components/home/hero-card.tsx"
   ],
   "MaskedText": [
     "components/check/mask-preview.tsx"

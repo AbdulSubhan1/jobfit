@@ -5,6 +5,7 @@ export function StreamText({ text, streaming }: Props) {
   return (
     <div
       data-ui="StreamText"
+      dir="auto"
       aria-live="polite"
       aria-busy={streaming}
       className="text-[15px] leading-relaxed [overflow-wrap:anywhere] whitespace-pre-wrap"

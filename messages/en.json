@@ -61,7 +61,8 @@
     "signIn": "Sign in",
     "signOut": "Sign out",
     "hi": "Hi, {name}",
-    "home": "JobFit home"
+    "home": "JobFit home",
+    "language": "العربية"
   },
   "footer": {
     "note": "Free and open source. Your CV is read in your browser; we don't store it.",
@@ -119,5 +120,92 @@
       "invalid": "The job or CV is too long. Trim it and try again.",
       "network": "Something went wrong. Check your connection and try again."
     }
+  },
+  "home": {
+    "titleStart": "Does your CV",
+    "titleFit": "fit",
+    "titleEnd": "the job?",
+    "intro": "Paste a job. Drop your CV. See your match score and the skills you're missing in seconds. Free, and private: your CV is read in your browser.",
+    "cta": "Check my CV",
+    "sample": "Try a sample",
+    "card": {
+      "sticker": "100% private",
+      "band": "Nice fit!",
+      "gaps": "4 gaps to close",
+      "letter": "Dear Hiring Team, I'm Sara, a frontend engineer…"
+    },
+    "stepsTitle": "How it works",
+    "steps": [
+      {
+        "title": "Paste the job",
+        "body": "Copy the whole job post, requirements and all."
+      },
+      {
+        "title": "Drop your CV",
+        "body": "A PDF is read on your device. Nothing is uploaded."
+      },
+      {
+        "title": "See your gaps",
+        "body": "A match score, the skills you have, and the ones you're missing."
+      },
+      {
+        "title": "Fix it with AI",
+        "body": "Sign in for rewritten bullets, a cover letter and interview prep."
+      }
+    ],
+    "privacyTitle": "Private by design",
+    "privacy": [
+      {
+        "title": "Read in your browser",
+        "body": "Your PDF is turned into text on your own device. The match score never touches a server."
+      },
+      {
+        "title": "Hidden before the AI",
+        "body": "Name, email, phone, address, links and ID numbers are swapped for tags. You see exactly what's sent, and can hide more."
+      },
+      {
+        "title": "Nothing stored",
+        "body": "No CVs, no results, no history. The only thing we count is how many AI runs you used today."
+      }
+    ],
+    "privacyLink": "Read the privacy page",
+    "endTitle": "Ready to see your score?",
+    "endBody": "It takes about 30 seconds. No sign-in needed."
+  },
+  "privacyPage": {
+    "eyebrow": "Privacy",
+    "title": "What happens to your CV",
+    "intro": "Short version: your CV stays on your device, the AI only sees a version with your personal details hidden, and we store nothing about it.",
+    "updated": "Last updated 11 November 2026",
+    "sections": [
+      {
+        "title": "The match score runs in your browser",
+        "body": "When you drop a PDF, your browser reads its text with a library called pdf.js. Matching skills happens in the same page. Your file and its text are not uploaded anywhere for this."
+      },
+      {
+        "title": "What the AI sees",
+        "body": "The AI tools need your CV text, so before anything is sent we replace your name, email, phone numbers, address, links and ID numbers with tags like [EMAIL-1]. You can click any other word to hide it too. The \"What the AI will see\" window shows the exact text we send. The real values are put back on your screen only."
+      },
+      {
+        "title": "Which AI",
+        "body": "The AI runs on a provider chosen by the site's owner (currently Google Gemini's free tier). Free tiers may use what you send to improve their models, which is one more reason we hide your personal details first."
+      },
+      {
+        "title": "What we store",
+        "body": "Nothing about your CV or results. For signed-in users we keep one counter per day (a random-looking account id and a number) so the free AI isn't abused. It expires within two days."
+      },
+      {
+        "title": "Signing in",
+        "body": "Google or GitHub tells us an account id and your name. We keep your first name and that id in an encrypted cookie in your browser, to say hi and to count your daily runs. We don't keep your email address or photo."
+      },
+      {
+        "title": "In your browser",
+        "body": "While you sign in, your job and CV text wait in this tab's session storage so you don't lose them. It's removed as soon as you're back, and it's gone when you close the tab."
+      },
+      {
+        "title": "Questions",
+        "body": "JobFit is open source, so you can check all of this in the code on GitHub."
+      }
+    ]
   }
 }

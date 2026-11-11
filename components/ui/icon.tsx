@@ -37,6 +37,9 @@ const GOOGLE: [string, string][] = [
   ],
 ];
 
+// Icons that point somewhere mirror in right-to-left languages
+const DIRECTIONAL = new Set<string>(["arrow-right", "logout"]);
+
 export type IconName = keyof typeof STROKE | "github" | "google";
 
 type Props = { name: IconName; size?: number; className?: string; label?: string };
@@ -48,7 +51,7 @@ export function Icon({ name, size = 18, className, label }: Props) {
     width: size,
     height: size,
     viewBox: "0 0 24 24",
-    className: cn("shrink-0", className),
+    className: cn("shrink-0", DIRECTIONAL.has(name) && "rtl:-scale-x-100", className),
   };
   if (name === "github") {
     return (

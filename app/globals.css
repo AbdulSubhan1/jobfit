@@ -94,8 +94,8 @@
 }
 
 @theme inline {
-  --font-display: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 

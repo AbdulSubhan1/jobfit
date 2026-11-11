@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { Logo } from "@/components/ui";
 import { Link } from "@/i18n/navigation";
 import { AuthButton } from "./auth-button";
+import { LocaleSwitch } from "./locale-switch";
 
 export async function SiteHeader() {
   const t = await getTranslations("nav");
@@ -15,6 +16,7 @@ export async function SiteHeader() {
           <Link href="/privacy" className="hidden text-sm font-bold hover:underline sm:inline">
             {t("privacy")}
           </Link>
+          <LocaleSwitch />
           <AuthButton />
         </nav>
       </div>
