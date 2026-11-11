@@ -1,1 +1,27 @@
-{}
+{
+  "Button": [],
+  "ButtonLink": [],
+  "Tabs": [],
+  "Textarea": [],
+  "FileDrop": [],
+  "Logo": [
+    "app/[locale]/design/page.tsx",
+    "app/[locale]/page.tsx"
+  ],
+  "SectionHeading": [
+    "app/[locale]/design/page.tsx"
+  ],
+  "Card": [
+    "app/[locale]/design/page.tsx"
+  ],
+  "Chip": [],
+  "Sticker": [],
+  "Icon": [],
+  "ScoreRing": [],
+  "StreamText": [],
+  "Alert": [],
+  "Dialog": [],
+  "ScanBar": [],
+  "NumberTicker": [],
+  "Confetti": []
+}
