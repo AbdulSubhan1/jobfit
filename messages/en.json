@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "title": "JobFit — does your CV fit the job?",
+    "description": "Paste a job, drop your CV, see your match score in seconds. Free and private: your CV is read in your browser."
+  },
+  "common": {
+    "close": "Close",
+    "appName": "JobFit"
+  },
+  "check": {
+    "eyebrow": "Free · no sign-in",
+    "title": "Check your fit",
+    "intro": "Paste a job, add your CV, and see which skills match. This part runs entirely in your browser.",
+    "job": {
+      "label": "Job description",
+      "placeholder": "Paste the full job post here: title, requirements, nice-to-haves…",
+      "count": "{count, number} / {max, number} characters"
+    },
+    "cv": {
+      "label": "Your CV",
+      "drop": "Drop your CV here, or click to choose",
+      "hint": "PDF, up to 5 MB · read on your device",
+      "reading": "Reading your CV",
+      "pasteInstead": "Paste text instead",
+      "uploadInstead": "Upload a PDF instead",
+      "placeholder": "Paste your CV text here",
+      "loaded": "{words, number} words read · on your device",
+      "sampleName": "Sample CV (Sara Malik, fictional)",
+      "errors": {
+        "empty": "We couldn't read text from this PDF. It may be a scanned image. Paste your CV text instead.",
+        "too-big": "That file is over 5 MB. Try a smaller PDF, or paste the text.",
+        "not-pdf": "That doesn't look like a PDF. Upload a .pdf file, or paste the text."
+      }
+    },
+    "submit": "Check match",
+    "needBoth": "Add both a job description and your CV.",
+    "sampleBanner": "You're looking at a sample with a fictional CV. Clear it to try your own.",
+    "clearSample": "Use my own",
+    "result": {
+      "label": "Match score",
+      "skillsFound": "skills found",
+      "bands": {
+        "great": "Great fit!",
+        "good": "Good fit",
+        "some": "Some gaps",
+        "big": "Big gaps"
+      },
+      "summary": "{have, number} of {total, number} skills from the job are in your CV.",
+      "noScore": "Not enough skills found to score",
+      "noScoreHint": "This job post doesn't list many specific skills. Paste the full post, including the requirements section.",
+      "have": "You have",
+      "missing": "Missing",
+      "noneMissing": "Nothing missing. Nice!",
+      "tip": "Only add skills you really have. Use the job's own words so screening tools find them."
+    }
+  },
+  "nav": {
+    "check": "Check my CV",
+    "privacy": "Privacy",
+    "design": "UI library",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "hi": "Hi, {name}",
+    "home": "JobFit home",
+    "language": "العربية"
+  },
+  "footer": {
+    "note": "Free and open source. Your CV is read in your browser; we don't store it.",
+    "by": "Built by Abdul Subhan",
+    "source": "Source on GitHub"
+  },
+  "ai": {
+    "title": "Make it fit with AI",
+    "intro": "Rewrite your CV bullets, draft a cover letter, or prepare for the interview. Your name and contact details are hidden before anything is sent.",
+    "tabs": {
+      "label": "AI tools",
+      "bullets": "CV bullets",
+      "cover-letter": "Cover letter",
+      "interview": "Interview prep"
+    },
+    "generate": {
+      "bullets": "Rewrite my bullets",
+      "cover-letter": "Write my cover letter",
+      "interview": "Prepare my interview"
+    },
+    "regenerate": "Regenerate",
+    "copy": "Copy",
+    "copied": "Copied",
+    "download": "Download",
+    "stop": "Stop",
+    "sampleSticker": "Sample result",
+    "sampleNote": "This result was saved earlier, so the sample never calls the AI. Sign in to run it on your own CV.",
+    "needInputs": "Add a job description and your CV above first.",
+    "runsLeft": "{remaining, plural, =0 {No AI runs left today} one {# AI run left today} other {# AI runs left today}} · nothing saved",
+    "runsPerDay": "{limit, number} free AI runs a day · nothing saved",
+    "signIn": {
+      "title": "Sign in to use the AI",
+      "body": "It's free: {limit, number} runs a day. Signing in only stops abuse of the free AI. We keep no CV, no results and no email address.",
+      "google": "Continue with Google",
+      "github": "Continue with GitHub",
+      "keep": "Your job and CV stay in this tab while you sign in."
+    },
+    "preview": {
+      "title": "What the AI will see",
+      "intro": "This is exactly what we send. Pink tags replace your personal details; they're swapped back on your screen only. Click any other word to hide it too.",
+      "hiddenCount": "{count, plural, =0 {Nothing hidden yet} one {# detail hidden} other {# details hidden}}",
+      "extra": "Also hidden:",
+      "unhide": "Show “{word}” again",
+      "hideWord": "Hide “{word}”",
+      "cv": "Your CV",
+      "job": "The job",
+      "send": "Send hidden version",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "unauthorized": "Your sign-in expired. Sign in again to continue.",
+      "limit": "You've used today's free AI runs. They reset at {time}.",
+      "provider": "The AI is busy or out of free quota right now. This run wasn't counted. Try again in a minute.",
+      "personal-data": "We found contact details we couldn't hide. Hide them in the preview and try again.",
+      "invalid": "The job or CV is too long. Trim it and try again.",
+      "network": "Something went wrong. Check your connection and try again."
+    }
+  },
+  "home": {
+    "titleStart": "Does your CV",
+    "titleFit": "fit",
+    "titleEnd": "the job?",
+    "intro": "Paste a job. Drop your CV. See your match score and the skills you're missing in seconds. Free, and private: your CV is read in your browser.",
+    "cta": "Check my CV",
+    "sample": "Try a sample",
+    "card": {
+      "sticker": "100% private",
+      "band": "Nice fit!",
+      "gaps": "4 gaps to close",
+      "letter": "Dear Hiring Team, I'm Sara, a frontend engineer…"
+    },
+    "stepsTitle": "How it works",
+    "steps": [
+      {
+        "title": "Paste the job",
+        "body": "Copy the whole job post, requirements and all."
+      },
+      {
+        "title": "Drop your CV",
+        "body": "A PDF is read on your device. Nothing is uploaded."
+      },
+      {
+        "title": "See your gaps",
+        "body": "A match score, the skills you have, and the ones you're missing."
+      },
+      {
+        "title": "Fix it with AI",
+        "body": "Sign in for rewritten bullets, a cover letter and interview prep."
+      }
+    ],
+    "privacyTitle": "Private by design",
+    "privacy": [
+      {
+        "title": "Read in your browser",
+        "body": "Your PDF is turned into text on your own device. The match score never touches a server."
+      },
+      {
+        "title": "Hidden before the AI",
+        "body": "Name, email, phone, address, links and ID numbers are swapped for tags. You see exactly what's sent, and can hide more."
+      },
+      {
+        "title": "Nothing stored",
+        "body": "No CVs, no results, no history. The only thing we count is how many AI runs you used today."
+      }
+    ],
+    "privacyLink": "Read the privacy page",
+    "endTitle": "Ready to see your score?",
+    "endBody": "It takes about 30 seconds. No sign-in needed."
+  },
+  "privacyPage": {
+    "eyebrow": "Privacy",
+    "title": "What happens to your CV",
+    "intro": "Short version: your CV stays on your device, the AI only sees a version with your personal details hidden, and we store nothing about it.",
+    "updated": "Last updated 11 November 2026",
+    "sections": [
+      {
+        "title": "The match score runs in your browser",
+        "body": "When you drop a PDF, your browser reads its text with a library called pdf.js. Matching skills happens in the same page. Your file and its text are not uploaded anywhere for this."
+      },
+      {
+        "title": "What the AI sees",
+        "body": "The AI tools need your CV text, so before anything is sent we replace your name, email, phone numbers, address, links and ID numbers with tags like [EMAIL-1]. You can click any other word to hide it too. The \"What the AI will see\" window shows the exact text we send. The real values are put back on your screen only."
+      },
+      {
+        "title": "Which AI",
+        "body": "The AI runs on a provider chosen by the site's owner (currently Google Gemini's free tier). Free tiers may use what you send to improve their models, which is one more reason we hide your personal details first."
+      },
+      {
+        "title": "What we store",
+        "body": "Nothing about your CV or results. For signed-in users we keep one counter per day (a random-looking account id and a number) so the free AI isn't abused. It expires within two days."
+      },
+      {
+        "title": "Signing in",
+        "body": "Google or GitHub tells us an account id and your name. We keep your first name and that id in an encrypted cookie in your browser, to say hi and to count your daily runs. We don't keep your email address or photo."
+      },
+      {
+        "title": "In your browser",
+        "body": "While you sign in, your job and CV text wait in this tab's session storage so you don't lose them. It's removed as soon as you're back, and it's gone when you close the tab."
+      },
+      {
+        "title": "Questions",
+        "body": "JobFit is open source, so you can check all of this in the code on GitHub."
+      }
+    ]
+  }
+}
