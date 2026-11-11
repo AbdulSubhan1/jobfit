@@ -9,6 +9,7 @@ export { Dialog } from "./dialog";
 export { FileDrop } from "./file-drop";
 export { Icon, type IconName } from "./icon";
 export { Logo } from "./logo";
+export { MaskedText } from "./masked-text";
 export { NumberTicker } from "./number-ticker";
 export { ScanBar } from "./scan-bar";
 export { ScoreRing } from "./score-ring";

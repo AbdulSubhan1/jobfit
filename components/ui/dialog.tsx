@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { Icon } from "./icon";
-import { focusRing, slab } from "./styles";
+import { focusRing, slabSurface } from "./styles";
 
 type Props = { open: boolean; onClose: () => void; title: string; closeLabel: string; children: ReactNode };
 
@@ -26,8 +26,8 @@ export function Dialog({ open, onClose, title, closeLabel, children }: Props) {
       onClose={onClose}
       onClick={(e) => e.target === e.currentTarget && onClose()}
       className={cn(
-        slab,
-        "m-auto w-[min(100%-2rem,42rem)] p-0 text-ink backdrop:bg-ink/55 backdrop:backdrop-blur-sm open:animate-rise",
+        slabSurface,
+        "fixed inset-0 m-auto h-fit w-[min(100%-2rem,42rem)] p-0 text-ink backdrop:bg-ink/55 backdrop:backdrop-blur-sm open:animate-rise",
       )}
     >
       <div className="flex items-center justify-between gap-3 border-b-[3px] border-ink px-5 py-3">

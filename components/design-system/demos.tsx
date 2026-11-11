@@ -12,6 +12,7 @@ import {
   FileDrop,
   Icon,
   Logo,
+  MaskedText,
   NumberTicker,
   ScanBar,
   ScoreRing,
@@ -97,6 +98,13 @@ function DialogDemo() {
       </Dialog>
     </>
   );
+}
+
+function MaskedTextDemo() {
+  const [hidden, setHidden] = useState<string[]>([]);
+  let text = "[NAME-1] · [EMAIL-1] · [PHONE-1]\nFrontend Engineer at Brightpay, 2021 to now";
+  hidden.forEach((w, i) => (text = text.replaceAll(w, `[HIDDEN-${i + 1}]`)));
+  return <MaskedText text={text} onWordClick={(w) => setHidden((h) => [...h, w])} wordLabel={(w) => `Hide ${w}`} />;
 }
 
 function ConfettiDemo() {
@@ -220,6 +228,7 @@ const DEMOS: Record<string, () => ReactNode> = {
       <Alert tone="error">We couldn&apos;t read text from this PDF.</Alert>
     </div>
   ),
+  MaskedText: MaskedTextDemo,
   Dialog: DialogDemo,
   ScanBar: () => <ScanBar label="Reading your CV" />,
   NumberTicker: () => (

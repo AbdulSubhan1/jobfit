@@ -159,3 +159,13 @@ export function findPersonalData(text: string): TagKind[] {
   if (has(text.replace(EMAIL, ""), LINK, (m) => !NOT_LINKS.has(m))) kinds.push("LINK");
   return kinds;
 }
+
+// Joins CV and job for one masking pass, so tag numbers are shared and the CV's name is hidden in both
+const SEPARATOR = "\n\n⁣JOB⁣\n\n";
+
+/** Masks the CV and the job together. The name is taken from the CV's first line. */
+export function maskForAi(cv: string, job: string, extraTerms: string[] = []) {
+  const { masked, map, found } = maskPersonalData(cv + SEPARATOR + job, { extraTerms });
+  const [maskedCv, maskedJob] = masked.split(SEPARATOR);
+  return { cv: maskedCv, job: maskedJob, map, found };
+}

@@ -53,5 +53,71 @@
       "noneMissing": "Nothing missing. Nice!",
       "tip": "Only add skills you really have. Use the job's own words so screening tools find them."
     }
+  },
+  "nav": {
+    "check": "Check my CV",
+    "privacy": "Privacy",
+    "design": "UI library",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "hi": "Hi, {name}",
+    "home": "JobFit home"
+  },
+  "footer": {
+    "note": "Free and open source. Your CV is read in your browser; we don't store it.",
+    "by": "Built by Abdul Subhan",
+    "source": "Source on GitHub"
+  },
+  "ai": {
+    "title": "Make it fit with AI",
+    "intro": "Rewrite your CV bullets, draft a cover letter, or prepare for the interview. Your name and contact details are hidden before anything is sent.",
+    "tabs": {
+      "label": "AI tools",
+      "bullets": "CV bullets",
+      "cover-letter": "Cover letter",
+      "interview": "Interview prep"
+    },
+    "generate": {
+      "bullets": "Rewrite my bullets",
+      "cover-letter": "Write my cover letter",
+      "interview": "Prepare my interview"
+    },
+    "regenerate": "Regenerate",
+    "copy": "Copy",
+    "copied": "Copied",
+    "download": "Download",
+    "stop": "Stop",
+    "sampleSticker": "Sample result",
+    "sampleNote": "This result was saved earlier, so the sample never calls the AI. Sign in to run it on your own CV.",
+    "needInputs": "Add a job description and your CV above first.",
+    "runsLeft": "{remaining, plural, =0 {No AI runs left today} one {# AI run left today} other {# AI runs left today}} · nothing saved",
+    "runsPerDay": "{limit, number} free AI runs a day · nothing saved",
+    "signIn": {
+      "title": "Sign in to use the AI",
+      "body": "It's free: {limit, number} runs a day. Signing in only stops abuse of the free AI. We keep no CV, no results and no email address.",
+      "google": "Continue with Google",
+      "github": "Continue with GitHub",
+      "keep": "Your job and CV stay in this tab while you sign in."
+    },
+    "preview": {
+      "title": "What the AI will see",
+      "intro": "This is exactly what we send. Pink tags replace your personal details; they're swapped back on your screen only. Click any other word to hide it too.",
+      "hiddenCount": "{count, plural, =0 {Nothing hidden yet} one {# detail hidden} other {# details hidden}}",
+      "extra": "Also hidden:",
+      "unhide": "Show “{word}” again",
+      "hideWord": "Hide “{word}”",
+      "cv": "Your CV",
+      "job": "The job",
+      "send": "Send hidden version",
+      "cancel": "Cancel"
+    },
+    "errors": {
+      "unauthorized": "Your sign-in expired. Sign in again to continue.",
+      "limit": "You've used today's free AI runs. They reset at {time}.",
+      "provider": "The AI is busy or out of free quota right now. This run wasn't counted. Try again in a minute.",
+      "personal-data": "We found contact details we couldn't hide. Hide them in the preview and try again.",
+      "invalid": "The job or CV is too long. Trim it and try again.",
+      "network": "Something went wrong. Check your connection and try again."
+    }
   }
 }

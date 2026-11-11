@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { findPersonalData, maskPersonalData, unmask } from "./mask";
+import { findPersonalData, maskForAi, maskPersonalData, unmask } from "./mask";
 
 const CV = `Abdul Subhan
 abdul.s@gmail.com | +92 300 1234567 | linkedin.com/in/abdul
@@ -88,5 +88,31 @@ describe("findPersonalData", () => {
     expect(findPersonalData("call +971501234567")).toEqual(["PHONE"]);
     expect(findPersonalData("mail me: x@y.com")).toEqual(["EMAIL"]);
     expect(findPersonalData("see https://abdul.dev")).toEqual(["LINK"]);
+  });
+});
+
+describe("maskForAi", () => {
+  const JOB = "Senior Frontend Engineer\nApply: jobs@acme.io or call +971 4 123 4567. We'd love Abdul's skills.";
+
+  test("masks the CV fully and the job's contact details, with shared tag numbers", () => {
+    const r = maskForAi(CV, JOB);
+    expect(r.cv).toContain("[EMAIL-1]");
+    expect(r.job).toContain("[EMAIL-2]");
+    expect(r.job).toContain("Senior Frontend Engineer");
+    expect(r.job).not.toContain("+971 4 123 4567");
+    expect(r.job).not.toMatch(/\bAbdul\b/);
+    expect(findPersonalData(`${r.job}\n${r.cv}`)).toEqual([]);
+  });
+
+  test("extra terms apply to both texts", () => {
+    const r = maskForAi(CV, "We use Alfred too", ["Alfred"]);
+    expect(r.cv).not.toContain("Alfred");
+    expect(r.job).toBe("We use [HIDDEN-1] too");
+  });
+
+  test("unmask restores both", () => {
+    const r = maskForAi(CV, JOB);
+    expect(unmask(r.cv, r.map)).toBe(CV);
+    expect(unmask(r.job, r.map)).toBe(JOB);
   });
 });

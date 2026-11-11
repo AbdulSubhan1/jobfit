@@ -3,8 +3,11 @@ import { cn } from "@/lib/cn";
 // Class recipes shared by more than one library component. Change a look here and every user of it follows.
 // There is no class merging, so never override these through className: add a variant instead.
 
-/** Thick-outlined white surface with a hard shadow: cards, dialogs, drop zones. */
-export const slab = "relative min-w-0 rounded-pop border-[3px] border-ink bg-card shadow-pop-lg";
+/** Thick-outlined white surface with a hard shadow. Has no position, so a modal dialog keeps its own. */
+export const slabSurface = "min-w-0 rounded-pop border-[3px] border-ink bg-card shadow-pop-lg";
+
+/** A slab that anchors absolutely placed children (stickers): cards. */
+export const slab = `relative ${slabSurface}`;
 
 /** Text inputs and textareas. */
 export const control =

@@ -1,18 +1,20 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Card, Icon } from "@/components/ui";
 import { SAMPLE } from "@/constants/sample";
 import { useRouter } from "@/i18n/navigation";
+import { saveDraft, takeDraft } from "@/lib/draft";
 import { matchCv, type MatchResult as Result } from "@/lib/match/score";
+import { AiTools } from "./ai-tools";
 import { CvInput } from "./cv-input";
 import { JobInput } from "./job-input";
 import { MatchResult } from "./match-result";
 
-type Props = { sample: boolean };
+type Props = { sample: boolean; limit: number };
 
-export function CheckFlow({ sample }: Props) {
+export function CheckFlow({ sample, limit }: Props) {
   const t = useTranslations("check");
   const router = useRouter();
   const resultRef = useRef<HTMLDivElement>(null);
@@ -21,6 +23,18 @@ export function CheckFlow({ sample }: Props) {
   const [source, setSource] = useState<string | null>(sample ? t("cv.sampleName") : null);
   const [result, setResult] = useState<Result | null>(() => (sample ? matchCv(SAMPLE.job, SAMPLE.cv) : null));
   const [isSample, setIsSample] = useState(sample);
+
+  // Back from Google/GitHub sign-in: restore what the user had typed, and its score
+  useEffect(() => {
+    if (sample) return;
+    const draft = takeDraft();
+    if (!draft) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- sessionStorage is only readable after hydration
+    setJob(draft.job);
+    setCv(draft.cv);
+    setSource(draft.source);
+    setResult(matchCv(draft.job, draft.cv));
+  }, [sample]);
 
   // Any edit makes the old score stale
   const edit =
@@ -74,6 +88,13 @@ export function CheckFlow({ sample }: Props) {
         {result && (
           <div className="grid animate-rise gap-8">
             <MatchResult result={result} />
+            <AiTools
+              job={job}
+              cv={cv}
+              sample={isSample}
+              limit={limit}
+              onBeforeSignIn={() => saveDraft({ job, cv, source })}
+            />
           </div>
         )}
       </div>

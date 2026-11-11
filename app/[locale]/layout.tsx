@@ -3,6 +3,9 @@ import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Providers } from "@/components/layout/providers";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
 import { routing, RTL_LOCALES } from "@/i18n/routing";
 import "../globals.css";
 
@@ -31,8 +34,14 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       dir={RTL_LOCALES.includes(locale) ? "rtl" : "ltr"}
       className={`${syne.variable} ${dmSans.variable} ${jetbrains.variable}`}
     >
-      <body className="min-h-dvh">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+      <body className="flex min-h-dvh flex-col">
+        <NextIntlClientProvider>
+          <Providers>
+            <SiteHeader />
+            <div className="flex-1">{children}</div>
+            <SiteFooter />
+          </Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

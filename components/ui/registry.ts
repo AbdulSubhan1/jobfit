@@ -121,6 +121,15 @@ export const UI_REGISTRY: RegistryEntry[] = [
     props: "text; streaming: boolean",
     example: "<StreamText text={output} streaming={busy} />",
   },
+  {
+    name: "MaskedText",
+    file: "masked-text.tsx",
+    group: "Display",
+    description:
+      "Text after masking, in mono. Tags are pink chips; with onWordClick, any other word can be clicked to hide it.",
+    props: "text; onWordClick?(word); wordLabel?(word)",
+    example: "<MaskedText text={masked} onWordClick={hide} />",
+  },
   // Feedback
   {
     name: "Alert",
