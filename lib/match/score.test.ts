@@ -42,6 +42,13 @@ describe("extractSkills", () => {
     expect(ids("C++ and C# experience")).toEqual(expect.arrayContaining(["cpp", "csharp"]));
   });
 
+  test("matches common CV phrasings of a skill", () => {
+    expect(ids("Mentored two juniors")).toContain("mentoring");
+    expect(ids("Moved 40 screens off REST calls")).toContain("rest");
+    expect(ids("Set up a GitHub Actions pipeline")).toContain("ci-cd");
+    expect(ids("Wrote Playwright tests")).toContain("testing");
+  });
+
   test("required lines weigh 1.5, others 1", () => {
     const skills = extractSkills("Required: Docker\nBonus: Terraform");
     expect(skills.get("docker")).toBe(1.5);
