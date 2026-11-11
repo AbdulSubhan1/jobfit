@@ -8,6 +8,7 @@ export function Textarea({ className, rows = 8, ...props }: Props) {
   return (
     <textarea
       data-ui="Textarea"
+      dir="auto"
       rows={rows}
       className={cn(control, "resize-y leading-relaxed", className)}
       {...props}
